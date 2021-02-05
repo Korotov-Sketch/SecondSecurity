@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Decoder {
+public class Decodonator {
     public static void main(String[] args) throws Exception {
         FileReader fileReader = new FileReader("src/main/resources/TextWithWord.txt");
         BufferedReader readerTextWithWord = new BufferedReader(fileReader);
@@ -28,26 +28,26 @@ public class Decoder {
             }
         }
 
-        char[] bits = stringBits.delete(stringBits.length() - 8, stringBits.length())
+        char[] bitsVar = stringBits.delete(stringBits.length() - 8, stringBits.length())
                 .toString()
                 .toCharArray();
 
-        byte[] bytes = new byte[bits.length / 8];
+        byte[] bytesVar = new byte[bitsVar.length / 8];
         int byteFromBits = 0;
-        for (int i = 0, degree = 7; i < bits.length; i++) {
-            byteFromBits += Math.pow(2, degree) * Character.getNumericValue(bits[i]);
+        for (int i = 0, deg = 7; i < bitsVar.length; i++) {
+            byteFromBits += Math.pow(2, deg) * Character.getNumericValue(bitsVar[i]);
 
-            if (degree == 0) {
-                degree = 7;
-                bytes[i / 8] = (byte)byteFromBits;
+            if (deg == 0) {
+                deg = 7;
+                bytesVar[i / 8] = (byte)byteFromBits;
                 byteFromBits = 0;
             }
             else {
-                degree--;
+                deg--;
             }
         }
 
-        String word = new String(bytes);
-        System.out.println(word);
+        String FinalWord = new String(bytesVar);
+        System.out.println(FinalWord);
     }
 }

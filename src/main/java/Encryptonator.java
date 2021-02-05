@@ -2,15 +2,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Encrypt {
+public class Encryptonator {
     public static void main(String[] args) throws Exception {
         FileInputStream inputStreamWord = new FileInputStream("src/main/resources/Word.txt");
 
         FileReader fileReader = new FileReader("src/main/resources/Text.txt");
         BufferedReader readerText = new BufferedReader(fileReader);
 
-        FileWriter fileWriter = new FileWriter("src/main/resources/TextWithWord.txt");
-        BufferedWriter writerText = new BufferedWriter(fileWriter);
+
 
         List<String> text = new ArrayList<>();
         String line = readerText.readLine();
@@ -33,6 +32,9 @@ public class Encrypt {
                 text.set(i, text.get(i).concat(" "));
             }
         }
+
+        FileWriter fileWriter = new FileWriter("src/main/resources/TextWithWord.txt");
+        BufferedWriter writerText = new BufferedWriter(fileWriter);
 
         for (String item: text) {
             writerText.write(item.concat("\n"));
