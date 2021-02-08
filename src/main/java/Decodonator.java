@@ -14,7 +14,6 @@ public class Decodonator {
             TrueText.add(line);
             line = readerTextWithWord.readLine();
         }
-        readerTextWithWord.close();
 
         StringBuilder stringBits = new StringBuilder();
         for (int i = 0, j = 0; i < TrueText.size() && (j < 8 || stringBits.length() % 8 != 0); i++) {
